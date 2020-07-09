@@ -1,0 +1,23 @@
+﻿@model mvcproject.Models.employee
+@{
+    ViewBag.Title = "details";
+}
+
+<h2>details</h2>
+
+
+<div style="text-align:center">
+    <h2>  My Name is :@Model.name </h2>
+    <h3> My Email is :@Model.emali</h3>
+    <h3> My Age is :@Model.age</h3>
+    <h3> My Age is :@Model.salary</h3>
+    <h3> My Age is :@Model.deptid</h3>
+    <h3>image : </h3>
+    @if (Model != null)
+    {
+        <img src="/imgfile/@Model.imgpath" width="250px" height="250px" />
+        <br />
+        <a href="/imgfile/@Model.cvpath">download C.V</a>
+    }
+
+    <br />

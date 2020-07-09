@@ -1,0 +1,40 @@
+﻿@model mvcproject.Models.department
+
+    @{
+        ViewBag.Title = "Editdept";
+    }
+
+    <h2>EDIT</h2>
+
+    <form method="post">
+        @Html.HiddenFor(n => n.deptid)
+        @Html.ValidationSummary()
+        <div>
+            <div class="form-group row">
+                @Html.LabelFor(n => n.deptname, new { @class = "col-md-4" })
+                @Html.TextBoxFor(n => n.deptname, new { @class = "col-md-6 form-control" })
+
+                <div class="col-md-4 text-danger">
+                    @Html.ValidationMessageFor(n => n.deptname)
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(n => n.location, new { @class = "col-md-4" })
+                @Html.TextBoxFor(n => n.location, new { @class = "col-md-6 form-control" })
+
+                <div class="col-md-4 text-danger">
+                    @Html.ValidationMessageFor(n => n.location)
+                </div>
+            </div>
+            <div>
+                
+                    <label>Image : </label>
+                    <input type="file" name="imgpath" />
+                 </div>
+            
+                <input type="submit" value="save" class="btn btn-primary" />
+            
+           
+      </div>
+    </form>

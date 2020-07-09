@@ -1,0 +1,51 @@
+﻿@model List<mvcproject.Models.employee>
+@{
+    ViewBag.Title = "employee";
+}
+
+<h2 style="text-align:center">Employees</h2>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-lg-6 mb-5">
+              <div class="card" style="width: 18rem;">
+              <img src="~/imgfile/@item.imgpath" style="height:250px" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"> Name :@item.name</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Emali :@item.emali</li>
+                <li class="list-group-item">Age : @item.age</li>
+                <li class="list-group-item"> Department :@item.department.deptname</li>
+              </ul>
+              <div class="card-body">
+                @Html.ActionLink("Delete", "remove", new { id = item.id },
+                 new { @class = "btn btn-danger", onClick = "return confirm('are you sure to delete " + item.name + " ')" })
+                @Html.ActionLink("Edit", "edit", new { id = item.id },new {@class= "btn btn-success" })
+                @Ajax.ActionLink("More Info", "viewajax", new { id = item.id }, new AjaxOptions()
+                {UpdateTargetId = "d",InsertionMode = InsertionMode.Replace, OnComplete = "fun"}, new { @class = "btn btn-info" })
+
+              </div>
+            </div>
+          </div>
+        }
+        <div class="modal" id="div">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="font-size:25px">
+                        Details
+                        <input type="button" value="close" data-dismiss="modal" class="btn btn-secondary" />
+                    </div>
+                    <div class="modal-body" id="d">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        function fun() {
+            $("#div").modal({ show: true });
+        }
+    </script>

@@ -1,0 +1,53 @@
+﻿@model mvcproject.Models.employee
+@{
+    ViewBag.Title = "checkuser";
+}
+
+<h2>checkuser</h2>
+
+<form method="post">
+
+    <div>
+        <div class="form-group row">
+            @Html.LabelFor(n => n.name, new { @class = "col-md-4" })
+            @Html.TextBoxFor(n => n.name, new { @class = "col-md-6 form-control" })
+            @*  <input class="form-control"
+                id="myTextBox"
+
+                type="text"
+                 />
+                          <input class="form-control"
+                           id="myTextBox"
+                           type="text" />*@
+
+            <div class="col-md-4 text-danger">
+                @Html.ValidationMessageFor(n => n.name)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(n => n.password, new { @class = "col-md-4" })
+            @Html.TextBoxFor(n => n.password, new { @class = "col-md-6 form-control" })
+
+
+            <div class="col-md-4 text-danger">
+                @Html.ValidationMessageFor(n => n.password)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(n => n.confirmpassword, new { @class = "col-md-4" })
+            @Html.TextBoxFor(n => n.confirmpassword, new { @class = "col-md-6 form-control" })
+
+
+            <div class="col-md-4 text-danger">
+                @Html.ValidationMessageFor(n => n.confirmpassword)
+            </div>
+        </div>
+    </div>
+    @Html.ActionLink("Edit", "checkuser", new { id = Model.id })
+    <input type="submit" value="Login" class="btn btn-primary" />
+    @if (ViewBag.status != null)
+    {
+        <label>@ViewBag.status</label>
+    }
+
+</form>

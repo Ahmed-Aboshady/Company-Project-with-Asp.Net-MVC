@@ -1,0 +1,62 @@
+﻿@model List<mvcproject.Models.department>
+@{
+    ViewBag.Title = "Showdept";
+}
+
+<h2>Showdept</h2>
+
+<h2>
+    <br />
+    @Html.ActionLink("Add Department", "adddept", new { @class = "btn btn-primary" })
+    <br />
+</h2>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>location</th>
+            <th>image </th>
+            <th>Remove</th>
+            <th>Update </th>
+            <th>Employees</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.deptid</td>
+                <td>@item.deptname</td>
+                <td>@item.location</td>
+                <td><img class="img-fluid" style="height:100px;width:100px" src="~/imgfile/@item.imgpath" alt="" /></td>
+                <td>@Html.ActionLink("Delete", "removedept", new { id = item.deptid }, new { @class = "btn btn-danger", onClick = "return confirm('are you sure to delete " + item.deptname + " ')" })</td>
+                <td>@Html.ActionLink("Edit", "Editdept", new { id = item.deptid }, new { @class = "btn btn-success" })</td>
+                <td>@Ajax.ActionLink("Details", "viewemployees", new { id = item.deptid }, new AjaxOptions()
+                    {UpdateTargetId = "d1",InsertionMode = InsertionMode.Replace,OnComplete = "funshow"}, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="modal" id="show">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="font-size:25px">
+                    Employees
+                    <input type="button" value="close" data-dismiss="modal" class="btn btn-secondary" />
+                </div>
+                <div class="modal-body" id="d1">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+        function funshow() {
+            $("#show").modal({ show: true });
+        }
+</script>

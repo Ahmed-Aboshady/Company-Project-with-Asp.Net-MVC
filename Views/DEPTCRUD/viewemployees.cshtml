@@ -1,0 +1,14 @@
+﻿@model List<mvcproject.Models.employee>
+
+@foreach (var item in Model)
+{
+    <div style="text-align:center">
+        <img class="img-fluid" style="height:250px;width:100%" src="~/imgfile/@item.imgpath" alt="" />
+        <h1>Name :@item.name</h1>
+        <h3>Emali :@item.emali </h3>
+        <h2>password :@item.password </h2>
+        <h1>Salary :@item.salary</h1>
+        <h1>Age :@item.age</h1>
+        <h1> <a href="~/imgfile/@item.cvpath" class="badge badge-light">download C.V</a></h1>
+    </div>
+}

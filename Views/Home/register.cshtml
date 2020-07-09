@@ -1,0 +1,79 @@
+﻿@model  mvcproject.Models.employee
+@{
+    ViewBag.Title = "register";
+}
+
+<h2>Register Employee</h2>
+
+
+
+<form method="post" enctype="multipart/form-data" style="text-align:center">
+    @Html.ValidationSummary()
+    <div class="form-horizontal">
+        <div class="form-group row">
+            @Html.LabelFor(n => n.name, new { @class = "col-md-4" })
+            @Html.TextBoxFor(n => n.name, new { @class = "col-md-6 form-control" })
+
+            <div class="col-md-4 text-danger">
+                @Html.ValidationMessageFor(n => n.name)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(n => n.emali, new { @class = "col-md-4" })
+            @Html.TextBoxFor(n => n.emali, new { @class = "col-md-6 form-control" })
+
+            <div class="col-md-4 text-danger">
+                @Html.ValidationMessageFor(n => n.emali)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(n => n.password, new { @class = "col-md-4" })
+            @Html.TextBoxFor(n => n.password, new { @class = "col-md-6 form-control" })
+
+            <div class="col-md-4 text-danger">
+                @Html.ValidationMessageFor(n => n.password)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(n => n.confirmpassword, new { @class = "col-md-4" })
+            @Html.TextBoxFor(n => n.confirmpassword, new { @class = "col-md-6 form-control" })
+
+            <div class="col-md-4 text-danger">
+                @Html.ValidationMessageFor(n => n.confirmpassword)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(n => n.salary, new { @class = "col-md-4" })
+            @Html.TextBoxFor(n => n.salary, new { @class = "col-md-6 form-control" })
+
+            <div class="col-md-4 text-danger">
+                @Html.ValidationMessageFor(n => n.salary)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(n => n.age, new { @class = "col-md-4" })
+            @Html.TextBoxFor(n => n.age, new { @class = "col-md-6 form-control" })
+
+            <div class="col-md-4 text-danger">
+                @Html.ValidationMessageFor(n => n.age)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(n => n.deptid, new { @class = "col-md-4" })
+            @Html.DropDownListFor(n => n.deptid, (SelectList)ViewBag.dept, new { @class = "col-md-6 form-control" })
+
+            <div class="col-md-4 text-danger">
+                @Html.ValidationMessageFor(n => n.deptid)
+            </div>
+        </div>
+        <br />
+        Image: <input type="file" name="imgpath" />
+        <br />
+        File: <input type="file" name="filpath" />
+        <br />
+    </div>
+    <input type="submit" value="save" class="btn btn-primary" />
+</form>
+    
+
